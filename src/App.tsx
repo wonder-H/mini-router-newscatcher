@@ -2,7 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { insApi } from './utils/api';
 import NewsLists from './components/NewsLists';
-
+import Header from './components/Header';
 function App() {
   const [newsListsId, setNewsListsId] = useState(null);
   const [newsLists, setNewsLists] = useState([]);
@@ -49,6 +49,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       {/* <NewsLists /> */}
       {newsLists.map((list) => (
         <div key={list.id}>

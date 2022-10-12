@@ -3,11 +3,12 @@ import React from 'react';
 function Header() {
   return (
     <header>
+      <span>MiniNews</span>
       <nav>
-        <a href="#">Best | </a>
-        <a href="#">News | </a>
-        <a href="#">Ask | </a>
-        <a href="#">Jobs</a>
+        <a href="/best">Best | </a>
+        <a href="/news">News | </a>
+        <a href="/ask">Ask | </a>
+        <a href="/jobs">Jobs</a>
       </nav>
     </header>
   );

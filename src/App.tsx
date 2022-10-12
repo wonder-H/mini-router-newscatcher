@@ -1,40 +1,64 @@
 import './App.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { insApi } from './utils/api';
+import NewsLists from './components/NewsLists';
 
 function App() {
-  const newsListsId = [];
-  const newsLists = [];
+  const [newsListsId, setNewsListsId] = useState(null);
+  const [newsLists, setNewsLists] = useState([]);
 
-  async function getNewsLists() {
+  // 응답 데이터 ==
+  /* by: string
+  descendants: number
+  id: number
+  kids: array
+  score: number
+  time: number
+  title: string
+  type: string
+  url: string */
+
+  async function getNewsListsId() {
     try {
       const res = await insApi.get('/topstories.json');
       if (res.statusText !== 'OK') {
         throw new Error('Could not fetch data :-/ ');
       }
-      return res.data;
+      const arr = [];
+      // const arr = res.data.map((id: number) => id);
+      // 20개만 받아오도록 설정
+      for (let i = 0; i < 10; i++) {
+        arr.push(res.data[i]);
+      }
+      setNewsListsId(arr);
     } catch (error) {
       console.error(error);
     }
   }
 
-  async function getNewsItems() {
-    for (let i = 0; i < 10; i++) {
-      await insApi.get(`/item/${newsListsId[i]}.json`).then((res) => newsLists.push(res.data));
-    }
-    console.log(newsLists);
-  }
-
   useEffect(() => {
-    getNewsLists().then((res) => {
-      res.forEach((id: number) => {
-        newsListsId.push(id);
+    if (!newsListsId) {
+      getNewsListsId();
+    } else {
+      newsListsId.forEach(async (id) => {
+        let { data } = await insApi.get(`/item/${id}.json`);
+        setNewsLists((newsLists) => [...newsLists, data]);
       });
-      getNewsItems();
-    });
-  }, []);
+    }
+  }, [newsListsId]);
 
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      {/* <NewsLists /> */}
+      {newsLists.map((list) => (
+        <div key={list.id}>
+          <p>id: {list.id}</p>
+          <p>title: {list.title}</p>
+          <p>time: {list.time}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default App;

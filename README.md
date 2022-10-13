@@ -16,3 +16,33 @@
 ### 목표 기간
 
 - 2022년 10월 14일까지
+
+
+
+#### 작업 중 발생 문제&해결
+
+#### 1. 컨텍스트 적용 중 DevTools 문제 발생
+
+- React DevTools 영역에서 오류 메세지 출력
+ 
+* 오류 메세지
+```
+Cannot add node "1" because a node with that id is already in the Store.
+```
+
+* 해결 
+
+1. package.json에 아래 코드를 추가
+
+```json
+"resolutions": { "react-devtools-core": "4.14.0" }
+```
+
+2. node modules 삭제 후 패키지 재설치
+
+* 관련 링크
+
+[DevTools Bug](https://github.com/facebook/react/issues/23226)
+
+
+

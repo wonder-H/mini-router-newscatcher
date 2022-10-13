@@ -5,28 +5,28 @@ import { routePathState } from '../state';
 function Header() {
   const [routePath, setRoutePath] = useRecoilState(routePathState);
 
+  const pathLists = [
+    { path: '/best', text: 'Best ' },
+    { path: '/news', text: 'News ' },
+    { path: '/ask', text: 'Ask ' },
+    { path: '/jobs', text: 'Jobs' },
+  ];
+
   const routePathHandler = (e, path: string) => {
     e.preventDefault();
+    location.hash = path;
     setRoutePath(path);
   };
 
   return (
     <header>
-      <span>MiniNews</span>
-      {routePath}
+      <h3>Today's MiniNews</h3>
       <nav>
-        <a href="/best" onClick={(e) => routePathHandler(e, '/best')}>
-          Best |
-        </a>
-        <a href="/news" onClick={(e) => routePathHandler(e, '/news')}>
-          News |
-        </a>
-        <a href="/ask" onClick={(e) => routePathHandler(e, '/ask')}>
-          Ask |
-        </a>
-        <a href="/jobs" onClick={(e) => routePathHandler(e, '/jobs')}>
-          Jobs
-        </a>
+        {pathLists.map((list) => (
+          <a href={list.path} onClick={(e) => routePathHandler(e, `${list.path}`)} key={list.text}>
+            {list.text}
+          </a>
+        ))}
       </nav>
     </header>
   );

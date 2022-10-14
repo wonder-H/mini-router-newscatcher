@@ -13,6 +13,12 @@
 
 때문에 News 컨셉 + 사용이 자유로운 Hacker News API로 변경
 
+- React ContextAPI → Recoil
+1. 초기 라우터 상태만 관리하기 위해 ContextAPI를 사용하는 방향으로 작업
+2. 이후 기능 확장 + 추가 상태 관리의 가능성 염두 
+
+Router의 상태 확인에 Recoil을 활용하기로 결정
+
 ### 목표 기간
 
 - 2022년 10월 14일까지

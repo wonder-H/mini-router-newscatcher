@@ -6,7 +6,6 @@ function Header() {
   const [routePath, setRoutePath] = useRecoilState(routePathState);
 
   const pathLists = [
-    { path: '/best', text: 'Best ' },
     { path: '/news', text: 'News ' },
     { path: '/ask', text: 'Ask ' },
     { path: '/jobs', text: 'Jobs' },

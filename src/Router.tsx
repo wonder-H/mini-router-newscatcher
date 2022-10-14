@@ -4,7 +4,6 @@ import { useRecoilValue } from 'recoil';
 import MainPage from './pages/MainPage';
 import AskPage from './pages/AskPage';
 import JobsPage from './pages/JobsPage';
-import BestPage from './pages/BestPage';
 import NewsPage from './pages/NewsPage';
 
 function Router() {
@@ -12,9 +11,6 @@ function Router() {
   let page = <MainPage />;
 
   switch (routePath) {
-    case '/best':
-      page = <BestPage />;
-      break;
     case '/news':
       page = <NewsPage />;
       break;

@@ -18,4 +18,11 @@ const getMoreLists = {
   }
 }
 
-export { insApi, getLists, getMoreLists };
+const getItemDetail = {
+  get: async (id: number) => {
+    const { data } = await insApi.get(`/item/${id}.json`)
+    return data
+  }
+}
+
+export { insApi, getLists, getMoreLists, getItemDetail };

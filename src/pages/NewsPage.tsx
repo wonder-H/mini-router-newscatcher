@@ -7,7 +7,7 @@ const StyledDiv = styled.div`
   box-sizing: border-box;
   margin: 50px auto;
   width: 80%;
-  height: 90vh;
+  height: 90%;
 `;
 
 function NewsPage() {

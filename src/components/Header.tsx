@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { routePathState } from '../state';
 
@@ -53,6 +53,11 @@ const StyledHeader = styled.header`
 
 function Header() {
   const [routePath, setRoutePath] = useRecoilState(routePathState);
+
+  // NOTE 동적 라우팅 처리할 곳 결정 필요(Router or Header)
+  useEffect(() => {
+    console.log(routePath);
+  }, [routePath]);
 
   const pathLists = [
     { path: '/news', text: 'News ' },

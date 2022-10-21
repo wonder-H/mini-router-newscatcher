@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil';
-import { listsIdSelector } from '../state';
+import { contentSelector } from '../state';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
@@ -42,7 +42,7 @@ const StyledDiv = styled.div`
 `;
 
 function JobsPage() {
-  const lists = useRecoilValue(listsIdSelector);
+  const lists = useRecoilValue(contentSelector('jobs'));
 
   return (
     <StyledDiv className="grid-container">

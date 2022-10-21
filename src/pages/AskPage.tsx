@@ -1,5 +1,5 @@
 import React from 'react';
-import { listsIdSelector } from '../state';
+import { contentSelector } from '../state';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 
@@ -27,7 +27,7 @@ const StyledDiv = styled.div`
 `;
 
 function AskPage() {
-  const lists = useRecoilValue(listsIdSelector);
+  const lists = useRecoilValue(contentSelector('ask'));
 
   return (
     <StyledDiv>

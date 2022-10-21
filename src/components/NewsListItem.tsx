@@ -15,9 +15,21 @@ const StyledDiv = styled.div`
   background: #ffffff;
   resize: vertical;
   box-shadow: 0px 5px 10px 0px rgba(115, 158, 179, 0.2);
+
+  h2 {
+    font-size: 14px;
+    font-weight: 700;
+  }
 `;
-function NewsListItem() {
-  return <StyledDiv>NewsListItem</StyledDiv>;
+function NewsListItem({ list }) {
+  return (
+    <StyledDiv>
+      <h2>{list.title}</h2>
+      <p>{list.user}</p>
+      <p>{list.time_ago}</p>
+      <p>comments {list.comments_count}</p>
+    </StyledDiv>
+  );
 }
 
 export default NewsListItem;

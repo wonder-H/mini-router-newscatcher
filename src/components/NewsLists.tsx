@@ -1,11 +1,15 @@
 import React from 'react';
 import NewsListItem from './NewsListItem';
 
-function NewsLists() {
+function NewsLists({ lists }) {
   return (
-    <div>
-      <NewsListItem />
-    </div>
+    <>
+      {lists.map((item) => (
+        <NewsListItem key={item.id} list={item}>
+          {item}
+        </NewsListItem>
+      ))}
+    </>
   );
 }
 

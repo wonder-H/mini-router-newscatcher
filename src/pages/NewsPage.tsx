@@ -15,14 +15,7 @@ function NewsPage() {
 
   return (
     <StyledDiv>
-      {lists.map((item) => (
-        <div key={item.id}>
-          <p>{item.title}</p>
-          <p>{item.user}</p>
-          <p>{item.time}</p>
-        </div>
-      ))}
-      <NewsLists />
+      <NewsLists lists={lists} />
     </StyledDiv>
   );
 }

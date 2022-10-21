@@ -1,27 +1,21 @@
 import axios from "axios";
-import { useState } from 'react'
 
 const insApi = axios.create({
-  baseURL: "https://hacker-news.firebaseio.com/v0"
+  baseURL: "https://api.hnpwa.com/v0"
 });
 
-const getIdLists = {
-  get: async (story: string) => {
-    const res = await insApi.get(`/${story}stories.json`)
-    // 100개만 받아오도록 설정
-    const arr = [];
-    for (let i = 0; i < 100; i++) {
-      arr.push(res.data[i]);
-    }
-    return arr
+const getLists = {
+  get: async (content: string) => {
+    const res = await insApi.get(`/${content}/1.json`)
+    return res.data
   }
 }
 
-const getStoryLists = {
-  get: async (id: number | string) => {
-    const { data } = await insApi.get(`/item/${id}.json`)
+const getMoreLists = {
+  get: async (page: number | string) => {
+    const { data } = await insApi.get(`/${page}.json`)
     return data
   }
 }
 
-export { insApi, getIdLists, getStoryLists };
+export { insApi, getLists, getMoreLists };

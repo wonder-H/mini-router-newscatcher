@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil';
-import { listsIdSelector } from '../state';
+import { contentSelector } from '../state';
 import styled from 'styled-components';
 import NewsLists from '../components/NewsLists';
 
@@ -11,21 +11,17 @@ const StyledDiv = styled.div`
 `;
 
 function NewsPage() {
-  const lists = useRecoilValue(listsIdSelector);
-
-  // 응답 데이터 ==
-  /* by: string
-  descendants: number
-  id: number
-  kids: array
-  score: number
-  time: number 
-  title: string
-  type: string
-  url: string */
+  const lists = useRecoilValue(contentSelector('news'));
 
   return (
     <StyledDiv>
+      {lists.map((item) => (
+        <div key={item.id}>
+          <p>{item.title}</p>
+          <p>{item.user}</p>
+          <p>{item.time}</p>
+        </div>
+      ))}
       <NewsLists />
     </StyledDiv>
   );
